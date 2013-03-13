@@ -1,6 +1,6 @@
 # hello
 
-FIXME
+Motive is to write a sample web portal application that uses HAML, SASS and models with Clojure compojure.
 
 ## Prerequisites
 
@@ -16,4 +16,5 @@ To start a web server for the application, run:
 
 ## License
 
-Copyright © 2013 FIXME
+Copyleft (ɔ)
+
