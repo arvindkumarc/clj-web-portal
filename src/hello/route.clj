@@ -1,12 +1,16 @@
 (ns hello.route
-  (:use compojure.core)
+  (:use compojure.core
+		hello.index
+		[hiccup.middleware :only (wrap-base-url)])
   (:require [compojure.handler :as handler]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+			[compojure.response :as response]))
 
-(defroutes app-routes
-(GET ["/user/:id", :id #"[0-9]+"] [id]
-  (str "<h1>Hello user " id "</h1>"))
+(defroutes hello-routes
+(GET "/" [] (index-page))
+  (route/resources "/")
   (route/not-found "Page not found"))
 
 (def app
-  (handler/site app-routes))
+  (-> (handler/site hello-routes)
+	  (wrap-base-url)))
